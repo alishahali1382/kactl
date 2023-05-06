@@ -132,7 +132,7 @@ Sweeping
 Strings
 	Longest common substring
 	Palindrome subsequences
-	Knuth-Morris-Pratt
+	KMP
 	Tries
 	Rolling polynomial hashes
 	Suffix array
