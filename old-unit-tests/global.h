@@ -8,7 +8,7 @@ using namespace std;
 
 #define rep(i, a, b) for(int i = a; i < (b); ++i)
 #define all(x) x.begin(), x.end()
-#define sz(x) (int)(x).size()
+#define SZ(x) (int)(x).size()
 
 typedef long long ll;
 typedef pair<int, int> pii;

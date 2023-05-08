@@ -14,7 +14,7 @@ struct LCA {
     vector<ll> dist;
     RMQ<pii> rmq;
 
-    LCA(graph& C) : time(sz(C), -99), dist(sz(C)), rmq(dfs(C)) {}
+    LCA(graph& C) : time(SZ(C), -99), dist(SZ(C)), rmq(dfs(C)) {}
 
     vpi dfs(graph& C) {
         vector<tuple<int, int, int, ll>> q(1);

@@ -18,7 +18,7 @@ struct bruteforce { // values in nodes
             if (i != p) root(i, cur);
         }
     }
-    bruteforce(vector<vector<int>> _tree): tree(_tree), vals(sz(tree)), pars(sz(tree)) {
+    bruteforce(vector<vector<int>> _tree): tree(_tree), vals(SZ(tree)), pars(SZ(tree)) {
         root(0);
     }
     bool dfsModify(int cur, int target, int val, int p=-1) {
@@ -77,7 +77,7 @@ void testAgainstOld(int n, int iters, int queries) {
             tree1[i.first].push_back(i.second);
             tree1[i.second].push_back(i.first);
         }
-        for (int i = 0; i < sz(tree1); i++) {
+        for (int i = 0; i < SZ(tree1); i++) {
             for (auto j : tree1[i]) {
                 tree2[i].push_back({j, 0});
             }

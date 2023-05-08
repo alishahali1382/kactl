@@ -32,7 +32,7 @@ int dfs(int at, int par, F& f) {
 			if (num[y] < me)
 				st.push_back(e);
 		} else {
-			int si = sz(st);
+			int si = SZ(st);
 			int up = dfs(y, e, f);
 			top = min(top, up);
 			if (up == me) {
@@ -49,6 +49,6 @@ int dfs(int at, int par, F& f) {
 
 template<class F>
 void bicomps(F f) {
-	num.assign(sz(ed), 0);
-	rep(i,0,sz(ed)) if (!num[i]) dfs(i, -1, f);
+	num.assign(SZ(ed), 0);
+	rep(i,0,SZ(ed)) if (!num[i]) dfs(i, -1, f);
 }

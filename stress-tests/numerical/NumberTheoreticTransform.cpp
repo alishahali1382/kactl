@@ -14,10 +14,10 @@ ll modpow(ll a, ll e) {
 }
 
 vl simpleConv(vl a, vl b) {
-	int s = sz(a) + sz(b) - 1;
+	int s = SZ(a) + SZ(b) - 1;
 	if (a.empty() || b.empty()) return {};
 	vl c(s);
-	rep(i,0,sz(a)) rep(j,0,sz(b))
+	rep(i,0,SZ(a)) rep(j,0,SZ(b))
 		c[i+j] = (c[i+j] + (ll)a[i] * b[j]) % mod;
 	for(auto &x: c) if (x < 0) x += mod;
 	return c;
@@ -45,9 +45,9 @@ int main() {
 		a.resize(16);
         vl a2 = a;
         ntt(a2);
-        rep(k, 0, sz(a2)) {
+        rep(k, 0, SZ(a2)) {
             ll sum = 0;
-            rep(x, 0, sz(a2)) { sum = (sum + a[x] * modpow(root, k * x * (mod - 1) / sz(a))) % mod; }
+            rep(x, 0, SZ(a2)) { sum = (sum + a[x] * modpow(root, k * x * (mod - 1) / SZ(a))) % mod; }
             assert(sum == a2[k]);
         }
 	}

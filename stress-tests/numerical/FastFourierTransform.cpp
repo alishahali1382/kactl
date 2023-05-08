@@ -22,9 +22,9 @@ int main() {
 	for(auto &x: A) x = rand() / (RAND_MAX + 1.0) * 10 - 5;
 	for(auto &x: B) x = rand() / (RAND_MAX + 1.0) * 10 - 5;
 	vd C = conv(A, B);
-	rep(i,0,sz(A) + sz(B) - 1) {
+	rep(i,0,SZ(A) + SZ(B) - 1) {
 		double sum = 0;
-		rep(j,0,sz(A)) if (i - j >= 0 && i - j < sz(B)) {
+		rep(j,0,SZ(A)) if (i - j >= 0 && i - j < SZ(B)) {
 			sum += A[j] * B[i - j];
 		}
 		assert(abs(sum - C[i]) < eps);

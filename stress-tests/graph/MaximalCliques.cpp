@@ -5,14 +5,14 @@
 template<class F>
 void fastCliques(vector<B>& eds, F f) {
 	B R{}, P = ~B(), X{};
-	vi deg(sz(eds));
-	rep(i,0,sz(eds)) deg[i] = sz(eds[i]);
-	rep(j,0,sz(eds)) {
+	vi deg(SZ(eds));
+	rep(i,0,SZ(eds)) deg[i] = SZ(eds[i]);
+	rep(j,0,SZ(eds)) {
 		int i = (int)(min_element(all(deg)) - deg.begin());
 		R[i] = 1;
 		rec(eds, R, P & eds[i], X & eds[i], f);
 		R[i] = P[i] = 0; X[i] = 1;
-		rep(k,0,sz(eds)) if (eds[i][k]) deg[k]--;
+		rep(k,0,SZ(eds)) if (eds[i][k]) deg[k]--;
 		deg[i] = 1000000;
 	}
 }
@@ -32,7 +32,7 @@ int main1() {
 			co++;
 			cl.insert(x);
 		});
-		assert(sz(cl) == co); // no duplicates
+		assert(SZ(cl) == co); // no duplicates
 		auto isClique = [&](B c) {
 			rep(i,0,n) if (c[i])
 			rep(j,i+1,n) if (c[j]) {

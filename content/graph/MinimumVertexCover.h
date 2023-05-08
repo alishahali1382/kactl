@@ -28,6 +28,6 @@ vi cover(vector<vi>& g, int n, int m) {
 	}
 	rep(i,0,n) if (!lfound[i]) cover.push_back(i);
 	rep(i,0,m) if (seen[i]) cover.push_back(n+i);
-	assert(sz(cover) == res);
+	assert(SZ(cover) == res);
 	return cover;
 }

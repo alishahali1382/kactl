@@ -3,7 +3,7 @@
 #include "../../content/strings/MinRotation.h"
 
 int min_rotation2(string& v) {
-	int n = sz(v);
+	int n = SZ(v);
 	string w = v; w.insert(w.end(), all(v));
 	int j = 0;
 	rep(i,1,n) {

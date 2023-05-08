@@ -12,7 +12,7 @@
 template<class T> T edmondsKarp(vector<unordered_map<int, T>>& graph, int source, int sink) {
 	assert(source != sink);
 	T flow = 0;
-	vi par(sz(graph)), q = par;
+	vi par(SZ(graph)), q = par;
 
 	for (;;) {
 		fill(all(par), -1);

@@ -1,7 +1,7 @@
 #include "../utilities/template.h"
 
 bool valid(vi deg) {
-	int n = sz(deg);
+	int n = SZ(deg);
 	sort(all(deg));
 	reverse(all(deg));
 	int sum = 0;
@@ -23,9 +23,9 @@ int main() {
 		vector<pii> possibleEd;
 		rep(i,0,N) rep(j,0,i) possibleEd.emplace_back(i, j);
 		set<vi> valids;
-		rep(bi,0,(1 << sz(possibleEd))) {
+		rep(bi,0,(1 << SZ(possibleEd))) {
 			vi deg(N);
-			rep(i,0,sz(possibleEd)) if (bi & (1 << i)) {
+			rep(i,0,SZ(possibleEd)) if (bi & (1 << i)) {
 				int a, b;
 				tie(a, b) = possibleEd[i];
 				deg[a]++;

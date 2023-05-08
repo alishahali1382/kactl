@@ -5,8 +5,8 @@ const int nmax = 5, mmax = 5, nmmax = 16;
 typedef bitset<5> bs;
 
 int solveLinear(vector<bs>& A, vi& b, bs& x, int m) {
-	int n = sz(A), rank = 0, br;
-	assert(m <= sz(x));
+	int n = SZ(A), rank = 0, br;
+	assert(m <= SZ(x));
 	vi col(m); iota(all(col), 0);
 	rep(i,0,n) {
 		for (br=i; br<n; ++br) if (A[br].any()) break;
@@ -39,7 +39,7 @@ int solveLinear(vector<bs>& A, vi& b, bs& x, int m) {
 
 template<class F>
 void rec(int i, int j, vector<bs>& A, int m, F f) {
-	if (i == sz(A)) {
+	if (i == SZ(A)) {
 		f();
 	}
 	else if (j == m) {

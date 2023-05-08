@@ -15,7 +15,7 @@ Products of three coordinates are used in intermediate steps so watch out for ov
 \end{minipage}
  * Usage:
  * vector<P> inter = segInter(s1,e1,s2,e2);
- * if (sz(inter)==1)
+ * if (SZ(inter)==1)
  *   cout << "segments intersect at " << inter[0] << endl;
  * Status: stress-tested, tested on kattis:intersection
  */

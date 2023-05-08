@@ -4,7 +4,7 @@
 
 template<class F>
 void gen(vector<ll>& v, int at, F f) {
-	if (at == sz(v)) f();
+	if (at == SZ(v)) f();
 	else {
 		rep(i,0,mod) {
 			v[at] = i;

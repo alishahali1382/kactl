@@ -55,8 +55,8 @@ void test(int N, int mxFlow, int iters) {
             auto pa = globalMinCut(mat2);
             assert(pa.first == minCut);
             vi inCut(n);
-            assert(sz(pa.second) != 0);
-            assert(sz(pa.second) != n);
+            assert(SZ(pa.second) != 0);
+            assert(SZ(pa.second) != n);
             for (int x : pa.second) {
                 assert(0 <= x && x < n);
                 assert(!inCut[x]);

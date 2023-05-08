@@ -15,7 +15,7 @@
 
 typedef Point<int> P;
 vector<array<int, 3>> manhattanMST(vector<P> ps) {
-	vi id(sz(ps));
+	vi id(SZ(ps));
 	iota(all(id), 0);
 	vector<array<int, 3>> edges;
 	rep(k,0,4) {

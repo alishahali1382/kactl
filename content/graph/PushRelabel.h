@@ -24,8 +24,8 @@ struct PushRelabel {
 
 	void addEdge(int s, int t, ll cap, ll rcap=0) {
 		if (s == t) return;
-		g[s].push_back({t, sz(g[t]), 0, cap});
-		g[t].push_back({s, sz(g[s])-1, 0, rcap});
+		g[s].push_back({t, SZ(g[t]), 0, cap});
+		g[t].push_back({s, SZ(g[s])-1, 0, rcap});
 	}
 
 	void addFlow(Edge& e, ll f) {
@@ -35,7 +35,7 @@ struct PushRelabel {
 		back.f -= f; back.c += f; ec[back.dest] -= f;
 	}
 	ll calc(int s, int t) {
-		int v = sz(g); H[s] = v; ec[t] = 1;
+		int v = SZ(g); H[s] = v; ec[t] = 1;
 		vi co(2*v); co[0] = v-1;
 		rep(i,0,v) cur[i] = g[i].data();
 		for (Edge& e : g[s]) addFlow(e, e.c);
@@ -44,7 +44,7 @@ struct PushRelabel {
 			while (hs[hi].empty()) if (!hi--) return -ec[s];
 			int u = hs[hi].back(); hs[hi].pop_back();
 			while (ec[u] > 0)  // discharge u
-				if (cur[u] == g[u].data() + sz(g[u])) {
+				if (cur[u] == g[u].data() + SZ(g[u])) {
 					H[u] = 1e9;
 					for (Edge& e : g[u]) if (e.c && H[u] > H[e.dest]+1)
 						H[u] = H[e.dest]+1, cur[u] = &e;
@@ -57,5 +57,5 @@ struct PushRelabel {
 				else ++cur[u];
 		}
 	}
-	bool leftOfMinCut(int a) { return H[a] >= sz(g); }
+	bool leftOfMinCut(int a) { return H[a] >= SZ(g); }
 };

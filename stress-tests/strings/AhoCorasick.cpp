@@ -5,7 +5,7 @@
 
 template<class F>
 void gen(string& s, int at, int alpha, F f) {
-	if (at == sz(s)) f();
+	if (at == SZ(s)) f();
 	else {
 		rep(i,0,alpha) {
 			s[at] = (char)('A' + i);
@@ -17,7 +17,7 @@ void gen(string& s, int at, int alpha, F f) {
 void test(const string& s) {
 	vector<string> pats;
 	string cur;
-	rep(i,0,sz(s)) {
+	rep(i,0,SZ(s)) {
 		if (s[i] == 'A') {
 			pats.push_back(cur);
 			cur = "";
@@ -32,9 +32,9 @@ void test(const string& s) {
 	vector<vi> positions = ac.findAll(pats, hay);
 
 	vi ord;
-	rep(i,0,sz(hay)) {
+	rep(i,0,SZ(hay)) {
 		ord.clear();
-		rep(j,0,sz(pats)) {
+		rep(j,0,SZ(pats)) {
 			string& pat = pats[j];
 			if (hay.substr(i, pat.size()) == pat) {
 				ord.push_back(j);

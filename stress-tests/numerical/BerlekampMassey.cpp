@@ -17,7 +17,7 @@ ll modpow(ll a, ll e) {
 
 template<class F>
 void gen(vector<ll>& v, int at, F f) {
-	if (at == sz(v)) f();
+	if (at == SZ(v)) f();
 	else {
 		rep(i,0,mod) {
 			v[at] = i;
@@ -39,12 +39,12 @@ int main() {
 			coef2 = berlekampMassey(full);
 // rep(i,0,2*n) cerr << full[i] << ' '; cerr << endl;
 // rep(i,0,n) cerr << coef[i] << ' '; cerr << endl;
-// rep(i,0,sz(coef2)) cerr << coef2[i] << ' '; cerr << endl;
-			if (sz(coef2) == n) assert(coef == coef2);
+// rep(i,0,SZ(coef2)) cerr << coef2[i] << ' '; cerr << endl;
+			if (SZ(coef2) == n) assert(coef == coef2);
 // rep(i,0,n) cerr << full[i] << ' ';
 			rep(i,n,2*n) {
 				ll x = 0;
-				rep(j,0,sz(coef2)) x = (x + coef2[j] * full[i-1 - j]) % mod;
+				rep(j,0,SZ(coef2)) x = (x + coef2[j] * full[i-1 - j]) % mod;
 				// cerr << x << ' ';
 				assert(x == full[i]);
 			}

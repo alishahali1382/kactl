@@ -27,14 +27,14 @@ int main() {
 		// getHashes
 		rep(le,1,n+1) {
 			auto ve = getHashes(s, le);
-			assert(sz(ve) == n-le+1);
+			assert(SZ(ve) == n-le+1);
 			rep(i,0,n-le+1) {
 				assert(ve[i].get() == hi.hashInterval(i, i + le).get());
 			}
 		}
 
 		// No collisions
-		assert(sz(strs) == sz(hashes));
+		assert(SZ(strs) == SZ(hashes));
 	}
 	cout<<"Tests passed!"<<endl;
 }

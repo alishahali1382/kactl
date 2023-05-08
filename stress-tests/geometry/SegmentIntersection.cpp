@@ -42,11 +42,11 @@ int main() {
         P tmp1, tmp2;
         auto res = oldImpl::segmentIntersection(a,b,c,d, tmp1, tmp2);
         auto res2 = segInter(a,b,c,d);
-        if (res != sz(res2)) {
+        if (res != SZ(res2)) {
             cout<<a<<' '<<b<<' '<<c<<' '<<d<<endl;
-            cout<<"old: "<<res<<" new: "<<sz(res2)<<endl;
+            cout<<"old: "<<res<<" new: "<<SZ(res2)<<endl;
         }
-        assert(res==sz(res2));
+        assert(res==SZ(res2));
         if (res==1) {
             assert(eq(*res2.begin(), tmp1));
         } else if (res==2) {

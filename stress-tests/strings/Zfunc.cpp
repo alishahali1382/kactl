@@ -3,7 +3,7 @@
 #include "../../content/strings/Zfunc.h"
 
 template <class F> void gen(string &s, int at, int alpha, F f) {
-    if (at == sz(s))
+    if (at == SZ(s))
         f();
     else {
         rep(i, 0, alpha) {
@@ -14,7 +14,7 @@ template <class F> void gen(string &s, int at, int alpha, F f) {
 }
 
 void test(const string &s) {
-    int n = sz(s);
+    int n = SZ(s);
     vi found = Z(s);
     vi expected(n, 0);
     rep(i, 1, n) { // exclude index 0 (!)

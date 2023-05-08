@@ -19,8 +19,8 @@ int main() {
 			ed[order[a]].push_back(order[b]);
 		}
 		vi ret = topoSort(ed);
-		if (acyclic) assert(sz(ret) == n);
-		else assert(sz(ret) <= n);
+		if (acyclic) assert(SZ(ret) == n);
+		else assert(SZ(ret) <= n);
 		vi seen(n);
 		for (int i : ret) {
 			assert(!seen[i]++);

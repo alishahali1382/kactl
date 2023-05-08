@@ -1,7 +1,7 @@
 #include "../utilities/template.h"
 
 ll det(vector<vector<ll>>& a) {
-	int n = sz(a); ll ans = 1;
+	int n = SZ(a); ll ans = 1;
 	rep(i,0,n) {
 		rep(j,i+1,n) {
 			while (a[j][i] != 0) { // gcd step
@@ -19,7 +19,7 @@ ll det(vector<vector<ll>>& a) {
 }
 
 ll rec(vector<vi>& ed, int active, int finished) {
-	int N = sz(ed);
+	int N = SZ(ed);
 	if (finished == (1 << N) - 1) return 1;
 	int chosen = -1;
 	rep(i,0,N) if (!(finished & (1 << i)) && (active & (1 << i))) {
@@ -27,7 +27,7 @@ ll rec(vector<vi>& ed, int active, int finished) {
 		break;
 	}
 	if (chosen == -1) return 0; // missing nodes from tree
-	int si = sz(ed[chosen]);
+	int si = SZ(ed[chosen]);
 	ll res = 0;
 	rep(bi,0,(1 << si)) {
 		int edto = 0;

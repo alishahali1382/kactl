@@ -14,12 +14,12 @@ T rectilinear_mst_n(vector<P> ps) {
   auto dist = [&](int i, int j) {
     return abs((ps[i]-ps[j]).x) + abs((ps[i]-ps[j]).y);
   };
-  for (int i = 0; i < sz(ps); ++i)
-    for (int j = i+1; j < sz(ps); ++j)
+  for (int i = 0; i < SZ(ps); ++i)
+    for (int j = i+1; j < SZ(ps); ++j)
       edges.push_back({i, j, dist(i,j)});
   T cost = 0;
   sort(all(edges), [](edge a, edge b) { return a.weight < b.weight; });
-  UF uf(sz(ps));
+  UF uf(SZ(ps));
   for (auto e: edges)
     if (uf.join(e.src, e.dst))
       cost += e.weight;
@@ -39,7 +39,7 @@ signed main() {
         auto edges = manhattanMST(pts);
         assert(edges.size() <= 4*pts.size());
         sort(all(edges));
-        UF uf(sz(pts));
+        UF uf(SZ(pts));
         int cost = 0, joined = 0;
         for (auto e: edges) if (uf.join(e[1], e[2])) cost += e[0], joined++;
         if (num_pts > 0) assert(joined == num_pts - 1);

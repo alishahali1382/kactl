@@ -14,8 +14,8 @@ int modinv(int x) {
 typedef vector<int> vd;
 
 int solveLinear(vector<vd>& A, vd& b, vd& x) {
-	int n = sz(A), m = sz(x), rank = 0, br, bc;
-	if (n) assert(sz(A[0]) == m);
+	int n = SZ(A), m = SZ(x), rank = 0, br, bc;
+	if (n) assert(SZ(A[0]) == m);
 	vi col(m); iota(all(col), 0);
 
 	rep(i,0,n) {
@@ -53,10 +53,10 @@ found:
 
 template<class F>
 void rec(int i, int j, vector<vd>& A, F f) {
-	if (i == sz(A)) {
+	if (i == SZ(A)) {
 		f();
 	}
-	else if (j == sz(A[i])) {
+	else if (j == SZ(A[i])) {
 		rec(i+1, 0, A, f);
 	}
 	else {
@@ -69,7 +69,7 @@ void rec(int i, int j, vector<vd>& A, F f) {
 
 template<class F>
 void rec2(int i, vd& A, F f) {
-	if (i == sz(A)) f();
+	if (i == SZ(A)) f();
 	else {
 		rep(v,0,mod) {
 			A[i] = v;

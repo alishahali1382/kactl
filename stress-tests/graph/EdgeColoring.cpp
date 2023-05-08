@@ -10,9 +10,9 @@ void test(int n, const vector<pii>& ed) {
 	for (pii e : ed) ++deg[e.first], ++deg[e.second];
 	int maxdeg = n == 0 ? 0 : *max_element(all(deg));
 	vi cols = edgeColoring(n, ed);
-	assert(sz(cols) == sz(ed));
+	assert(SZ(cols) == SZ(ed));
 	vector<vector<bool>> usedCols(n, vector<bool>(maxdeg+1));
-	rep(i,0,sz(cols)) {
+	rep(i,0,SZ(cols)) {
 		int col = cols[i];
 		assert(cols[i] <= maxdeg);
 		for (int x : {ed[i].first, ed[i].second}) {
@@ -32,11 +32,11 @@ void testCorrect() {
 					ed.push_back({i, j});
 				}
 			}
-			if (n <= 4 || n + sz(ed) <= 9) {
+			if (n <= 4 || n + SZ(ed) <= 9) {
 				// test all k!*2^k input orders
 				sort(all(ed));
 				if (n != 0) do {
-					rep(bi,0,(1 << sz(ed))) {
+					rep(bi,0,(1 << SZ(ed))) {
 						if (bi) {
 							int ind = __builtin_ctz(bi);
 							swap(ed[ind].first, ed[ind].second);

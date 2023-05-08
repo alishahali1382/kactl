@@ -4,7 +4,7 @@ const int mod = 7; // 4
 
 typedef vector<vector<ll>> vvll;
 ll det(vvll& a) { // integer determinant
-	int n = sz(a); ll ans = 1;
+	int n = SZ(a); ll ans = 1;
 	rep(i,0,n) {
 		rep(j,i+1,n) {
 			while (a[j][i] != 0) { // gcd step
@@ -23,7 +23,7 @@ ll det(vvll& a) { // integer determinant
 }
 
 ll idet(vvll& a) { // integer determinant
-	int n = sz(a); ll ans = 1;
+	int n = SZ(a); ll ans = 1;
 	rep(i,0,n) {
 		rep(j,i+1,n) {
 			while (a[j][i] != 0) { // gcd step
@@ -40,7 +40,7 @@ ll idet(vvll& a) { // integer determinant
 }
 
 double det(vector<vector<double>>& a) {
-	int n = sz(a); double res = 1;
+	int n = SZ(a); double res = 1;
 	rep(i,0,n) {
 		int b = i;
 		rep(j,i+1,n) if (fabs(a[j][i]) > fabs(a[b][i])) b = j;
@@ -57,10 +57,10 @@ double det(vector<vector<double>>& a) {
 
 template<class F>
 void rec(int i, int j, vvll& A, F f) {
-	if (i == sz(A)) {
+	if (i == SZ(A)) {
 		f();
 	}
-	else if (j == sz(A[i])) {
+	else if (j == SZ(A[i])) {
 		rec(i+1, 0, A, f);
 	}
 	else {
@@ -73,7 +73,7 @@ void rec(int i, int j, vvll& A, F f) {
 
 template<class F>
 void rec2(int i, vector<ll>& A, F f) {
-	if (i == sz(A)) f();
+	if (i == SZ(A)) f();
 	else {
 		rep(v,0,mod) {
 			A[i] = v;

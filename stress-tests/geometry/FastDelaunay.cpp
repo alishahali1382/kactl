@@ -40,10 +40,10 @@ struct Bumpalloc {
 template<class A, class F>
 void dela(A& v, F f) {
 	auto ret = triangulate(v);
-	assert(sz(ret) % 3 == 0);
+	assert(SZ(ret) % 3 == 0);
 	map<P, int> lut;
-	rep(i,0,sz(v)) lut[v[i]] = i;
-	for (int a = 0; a < sz(ret); a += 3) {
+	rep(i,0,SZ(v)) lut[v[i]] = i;
+	for (int a = 0; a < SZ(ret); a += 3) {
 		f(lut[ret[a]], lut[ret[a+1]], lut[ret[a+2]]);
 	}
 }
@@ -149,7 +149,7 @@ int main2() {
 	sort(all(ps));
 	ps.erase(unique(all(ps)), ps.end());
 
-	cout << sz(ps) << endl;
+	cout << SZ(ps) << endl;
 	triangulate(ps);
 	return 0;
 }

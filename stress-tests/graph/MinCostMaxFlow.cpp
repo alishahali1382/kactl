@@ -43,7 +43,7 @@ void operator delete(void*) noexcept {}
 typedef vector<ll> vd;
 bool zero(ll x) { return x == 0; }
 ll MinCostMatching(const vector<vd>& cost, vi& L, vi& R) {
-	int n = sz(cost), mated = 0;
+	int n = SZ(cost), mated = 0;
 	vd dist(n), u(n), v(n);
 	vi dad(n), seen(n);
 

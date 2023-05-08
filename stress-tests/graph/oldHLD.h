@@ -21,10 +21,10 @@ struct HLD {
 	vector<Node> V;
 	vector<Chain> C;
 
-	HLD(vector<vpi>& g) : V(sz(g)) {
+	HLD(vector<vpi>& g) : V(SZ(g)) {
 		dfs(0, -1, g, 0);
 		for(auto &c: C) {
-			c.tree = {sz(c.nodes), 0};
+			c.tree = {SZ(c.nodes), 0};
 			for (int ni : c.nodes)
 				c.tree.update(V[ni].pos, V[ni].val);
 		}
@@ -57,7 +57,7 @@ struct HLD {
 					f(ans, n1.val), i1 = n1.par;
 				else {
 					Chain& c = C[n1.chain];
-					f(ans, n1.pos ? c.tree.query(n1.pos, sz(c.nodes))
+					f(ans, n1.pos ? c.tree.query(n1.pos, SZ(c.nodes))
 					              : c.tree.s[1]);
 					i1 = c.par;
 				}
@@ -86,8 +86,8 @@ struct HLD {
 		}
 		tie(sz, nod, ch) = mx;
 		if (2*sz < sum) return pii(sum, -1);
-		if (ch == -1) { ch = sz(C); C.emplace_back(); }
-		V[nod].pos = sz(C[ch].nodes);
+		if (ch == -1) { ch = SZ(C); C.emplace_back(); }
+		V[nod].pos = SZ(C[ch].nodes);
 		V[nod].chain = ch;
 		C[ch].par = at;
 		C[ch].nodes.push_back(nod);

@@ -5,7 +5,7 @@ const double eps = 1e-12;
 
 enum { YES, NO, MULT };
 int solve_linear(vector<vd>& A, vd& b, vd& x) {
-	int n = sz(A), m = sz(x), br = -1, bc = -1;
+	int n = SZ(A), m = SZ(x), br = -1, bc = -1;
 	vi col(m); iota(all(col), 0);
 
 	rep(i,0,n) {

@@ -54,7 +54,7 @@ int main() {
 		}
 		rep(i,0,N) ct -= line[i];
 		assert(ct == 0);
-		sum += sz(iv);
+		sum += SZ(iv);
 		++sumit;
 	}
 	cout<<"Tests passed!"<<endl;

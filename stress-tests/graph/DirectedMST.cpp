@@ -147,7 +147,7 @@ int main() {
 			}
 			assert(sum == ans1);
 			vi seen(n), q = {r};
-			rep(qi,0,sz(q)) {
+			rep(qi,0,SZ(q)) {
 				int s = q[qi];
 				if (!seen[s]++)
 					for(auto &x: ch[s]) q.push_back(x);

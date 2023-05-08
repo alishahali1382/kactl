@@ -9,7 +9,7 @@
 #pragma once
 
 array<vi, 2> manacher(const string& s) {
-	int n = sz(s);
+	int n = SZ(s);
 	array<vi,2> p = {vi(n+1), vi(n)};
 	rep(z,0,2) for (int i=0,l=0,r=0; i < n; i++) {
 		int t = r-i+!z;

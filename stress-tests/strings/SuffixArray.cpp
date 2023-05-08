@@ -5,7 +5,7 @@
 struct VecSuffixArray {
 	vi sa, lcp;
 	VecSuffixArray(vi &s, int lim = 256) {
-		int n = sz(s), k = 0;
+		int n = SZ(s), k = 0;
 		vi x(2 * n), y(2 * n), wv(n), ws(max(n, lim)), rank(n);
 		sa = lcp = rank;
 		rep(i,0,n) ws[x[i] = s[i]]++;
@@ -41,7 +41,7 @@ string display(const string& s) {
 
 template<class F>
 void gen(string& s, int at, int alpha, F f) {
-	if (at == sz(s)) f();
+	if (at == SZ(s)) f();
 	else {
 		rep(i,0,alpha) {
 			s[at] = (char)(i + 1);
@@ -54,7 +54,7 @@ void test(const string& s, int alpha) {
 	// cout << display(s) << endl;
 	string copy = s;
 	SuffixArray sa(copy, alpha+1);
-	vi suffixes(sz(s)+1), lcp(sz(s)+1);
+	vi suffixes(SZ(s)+1), lcp(SZ(s)+1);
 	iota(all(suffixes), 0);
 	sort(all(suffixes), [&](int a, int b) {
 		return s.substr(a) < s.substr(b);
@@ -65,9 +65,9 @@ void test(const string& s, int alpha) {
 		assert(suffixes == sa.sa);
 	}
 
-	rep(i,0,sz(s)) {
+	rep(i,0,SZ(s)) {
 		int j = 0;
-		while (max(j + suffixes[i], suffixes[i+1]) < sz(s) &&
+		while (max(j + suffixes[i], suffixes[i+1]) < SZ(s) &&
 				s[j + suffixes[i]] == s[j + suffixes[i+1]])
 			j++;
 		lcp[i+1] = j;
@@ -89,11 +89,11 @@ void count_sort(vector<pli> &b, int bits) { // (optional)
 	for (int it = 0; it < 2; it++) {
 		int move = it * bits;
 		vector<int> q(1 << bits), w((q).size() + 1);
-		for (int i = 0; i < sz(b); i++)
+		for (int i = 0; i < SZ(b); i++)
 			q[(b[i].first >> move) & mask]++;
 		partial_sum(q.begin(), q.end(), w.begin() + 1);
 		vector<pli> res(b.size());
-		for (int i = 0; i < sz(b); i++)
+		for (int i = 0; i < SZ(b); i++)
 			res[w[(b[i].first >> move) & mask]++] = b[i];
 		swap(b, res);
 	}
@@ -102,7 +102,7 @@ struct SuffixArray {
 	vector<int> a;
 	string s;
 	SuffixArray(const string &_s) : s(_s + '\0') {
-		int N = sz(s);
+		int N = SZ(s);
 		vector<pli> b(N);
 		a.resize(N);
 		for (int i = 0; i < N; i++) {
@@ -128,13 +128,13 @@ struct SuffixArray {
 				b[i].second = i;
 			}
 		}
-		for (int i = 0; i < sz(a); i++)
+		for (int i = 0; i < SZ(a); i++)
 			a[i] = b[i].second;
 	}
 	vector<int> lcp() {
 		// longest common prefixes: res[i] = lcp(a[i],
 		// a[i-1])
-		int n = sz(a), h = 0;
+		int n = SZ(a), h = 0;
 		vector<int> inv(n), res(n);
 		for (int i = 0; i < n; i++)
 			inv[a[i]] = i;
@@ -182,14 +182,14 @@ signed compare() {
 			old::SuffixArray kactl(S);
 			// cout << kactl.a[100] << endl;
 			auto lcp = kactl.lcp();
-			rep(i,0,sz(S)+1)
+			rep(i,0,SZ(S)+1)
 				res.push_back({kactl.a[i], lcp[i]});
 		}
 		{
 			timeit x("MIT");
 			SuffixArray sa(S);
 			// cout << sa.sa[100] << endl;
-			rep(i,0,sz(S)+1) {
+			rep(i,0,SZ(S)+1) {
 				assert((res[i] == array<int, 2>{sa.sa[i], sa.lcp[i]}));
 			}
 		}

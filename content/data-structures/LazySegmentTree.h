@@ -7,7 +7,7 @@
  * Can be changed to other things.
  * Use with a bump allocator for better performance, and SmallPtr or implicit indices to save memory.
  * Time: O(\log N).
- * Usage: Node* tr = new Node(v, 0, sz(v));
+ * Usage: Node* tr = new Node(v, 0, SZ(v));
  * Status: stress-tested a bit
  */
 #pragma once

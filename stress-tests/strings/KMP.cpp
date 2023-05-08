@@ -4,7 +4,7 @@
 
 template<class F>
 void gen(string& s, int at, int alpha, F f) {
-	if (at == sz(s)) f();
+	if (at == SZ(s)) f();
 	else {
 		rep(i,0,alpha) {
 			s[at] = (char)('a' + i);
@@ -15,7 +15,7 @@ void gen(string& s, int at, int alpha, F f) {
 
 void test(const string& s) {
 	vi p = pi(s);
-	rep(i,0,sz(s)) {
+	rep(i,0,SZ(s)) {
 		int maxlen = -1;
 		rep(len,0,i+1) {
 			rep(j,0,len) {

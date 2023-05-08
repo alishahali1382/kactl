@@ -17,7 +17,7 @@ struct UF {
 };
 
 bool hasEulerWalk(vector<vector<pii>>& ed, int start, bool undir, bool cycle) {
-	int n = sz(ed);
+	int n = SZ(ed);
 	int odd = 0;
 	bool anyEdges = false;
 	vi nins(n);
@@ -27,16 +27,16 @@ bool hasEulerWalk(vector<vector<pii>>& ed, int start, bool undir, bool cycle) {
 	rep(i,0,n) {
 		if (!ed[i].empty()) anyEdges = true;
 		if (undir) {
-			assert(sz(ed[i]) == nins[i]);
+			assert(SZ(ed[i]) == nins[i]);
 			int nout = 0;
 			for(auto &x: ed[i]) if (x.first != i) nout++;
 			if (i != start && nout % 2) odd++;
 		}
 		else {
-			if (nins[i] == sz(ed[i])) continue;
+			if (nins[i] == SZ(ed[i])) continue;
 			if (cycle) return false;
-			if (abs(nins[i] - sz(ed[i])) > 1) { return false; }
-			if (nins[i] < sz(ed[i]) && i != start) { return false; }
+			if (abs(nins[i] - SZ(ed[i])) > 1) { return false; }
+			if (nins[i] < SZ(ed[i]) && i != start) { return false; }
 		}
 	}
 	if (odd > !cycle) { return false; }
@@ -52,18 +52,18 @@ bool hasEulerWalk(vector<vector<pii>>& ed, int start, bool undir, bool cycle) {
 }
 
 vi eulerCycle(vector<vector<pii>>& gr, int nedges, int src=0) {
-	int n = sz(gr);
+	int n = SZ(gr);
 	vi D(n), its(n), eu(nedges), ret, s = {src};
 	// D[src]++; // to allow Euler paths, not just cycles
 	while (!s.empty()) {
-		int x = s.back(), y, e, &it = its[x], end = sz(gr[x]);
+		int x = s.back(), y, e, &it = its[x], end = SZ(gr[x]);
 		if (it == end){ ret.push_back(x); s.pop_back(); continue; }
 		tie(y, e) = gr[x][it++];
 		if (!eu[e]) {
 			D[x]--, D[y]++;
 			eu[e] = 1; s.push_back(y);
 		}}
-	for(auto &x: D) if (x < 0 || sz(ret) != nedges+1) return {};
+	for(auto &x: D) if (x < 0 || SZ(ret) != nedges+1) return {};
 	return {ret.rbegin(), ret.rend()};
 }
 
@@ -98,7 +98,7 @@ int main() {
 				cout << "returned" << endl;
 				for(auto &x: res) cout << x << ' ';
 				cout << endl;
-				cout << "of length " << sz(res) << endl;
+				cout << "of length " << SZ(res) << endl;
 			}
 
 			if (res.empty()) {
@@ -110,7 +110,7 @@ int main() {
 				if (cycle) assert(res.back() == start);
 				int cur = start;
 				vi seenEdge(m);
-				rep(i,1,sz(res)) {
+				rep(i,1,SZ(res)) {
 					int x = res[i];
 					for(auto &eid: allEds[pii(cur, x)]) {
 						if (!seenEdge[eid]) {

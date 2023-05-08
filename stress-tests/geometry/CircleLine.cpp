@@ -32,7 +32,7 @@ int main() {
 		vector<P> points = circleLine(c, r, a, b);
 
 		// Soundness
-		assert(sz(points) <= 2);
+		assert(SZ(points) <= 2);
 		for (P p : points) {
 			// Point is on circle
 			assert(abs((p - c).dist() - r) < 1e-6);

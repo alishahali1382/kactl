@@ -21,7 +21,7 @@ T& operator/=(T& a, T b) { return a = a / b; }
 
 vector<T> tridiagonal(vector<T> diag, const vector<T>& super,
 		const vector<T>& sub, vector<T> b) {
-	int n = sz(b); vi tr(n);
+	int n = SZ(b); vi tr(n);
 	rep(i,0,n-1) {
 		if (diag[i].x == 0) {
 			if (super[i].x == 0) return {};
@@ -57,8 +57,8 @@ int modinv(int x) {
 typedef vector<int> vd;
 
 int solveLinear(vector<vd>& A, vd& b, vd& x) {
-	int n = sz(A), m = sz(x), rank = 0, br, bc;
-	if (n) assert(sz(A[0]) == m);
+	int n = SZ(A), m = SZ(x), rank = 0, br, bc;
+	if (n) assert(SZ(A[0]) == m);
 	vi col(m); iota(all(col), 0);
 
 	rep(i,0,n) {
@@ -181,7 +181,7 @@ namespace real {
 typedef double T;
 vector<T> tridiagonal(vector<T> diag, const vector<T>& super,
 		const vector<T>& sub, vector<T> b) {
-	int n = sz(b); vi tr(n);
+	int n = SZ(b); vi tr(n);
 	rep(i,0,n-1) {
 		if (abs(diag[i]) < 1e-9 * abs(super[i])) { // diag[i] == 0
 			throw false; // assert that this doesn't happen; we're testing stability
@@ -210,8 +210,8 @@ typedef double T;
 typedef vector<double> vd;
 
 int solveLinear(vector<vd>& A, vd& b, vd& x) {
-	int n = sz(A), m = sz(x), rank = 0, br, bc;
-	if (n) assert(sz(A[0]) == m);
+	int n = SZ(A), m = SZ(x), rank = 0, br, bc;
+	if (n) assert(SZ(A[0]) == m);
 	vi col(m); iota(all(col), 0);
 
 	rep(i,0,n) {
@@ -248,8 +248,8 @@ found:
 }
 
 int positiveDefinite(vector<vd>& A) {
-	int n = sz(A), m = n;
-	if (n) assert(sz(A[0]) == m);
+	int n = SZ(A), m = n;
+	if (n) assert(SZ(A[0]) == m);
 	vi col(m); iota(all(col), 0);
 
 	rep(i,0,n) {
@@ -271,7 +271,7 @@ double nice_double() {
 }
 
 bool validMat(const vector<vd>& mat) {
-	const int n = sz(mat);
+	const int n = SZ(mat);
 	bool faila = false, failb = false, sym = true;
 	rep(i,0,n) {
 		double suma = 0, sumb = 0;

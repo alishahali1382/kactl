@@ -22,13 +22,13 @@ template<class G>
 void flow_add_edge(G& g, int s, int t,
 		Flow c, Flow cost = 0) {
 	assert(s != t);
-	g[s].push_back(FlowEdge(t, sz(g[t]), c, cost));
-	g[t].push_back(FlowEdge(s, sz(g[s]) - 1, 0, cost));
+	g[s].push_back(FlowEdge(t, SZ(g[t]), c, cost));
+	g[t].push_back(FlowEdge(s, SZ(g[s]) - 1, 0, cost));
 }
 
 template<class G>
 pair<Flow, Flow> aug(G &g, int s, int t) {
-	int n = sz(g);
+	int n = SZ(g);
 	vi mark(n, -1);
 	vector<Flow> mindist(n, inf);
 	bool changed = true; mindist[s] = 0;

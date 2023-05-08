@@ -45,9 +45,9 @@ vector<pii> randomRegularGraphAsEdgeList(int n, int k) {
 	int failures = 0;
 	set<pii> seen;
 	while (!cands.empty()) {
-		if (sz(cands) == 1) goto fail;
-		int ai = randRange(sz(cands));
-		int bi = randRange(sz(cands));
+		if (SZ(cands) == 1) goto fail;
+		int ai = randRange(SZ(cands));
+		int bi = randRange(SZ(cands));
 		int a = cands[ai], b = cands[bi];
 		if (a == b) continue;
 		if (!seen.insert(minmax(a, b)).second) {
@@ -67,7 +67,7 @@ vector<pii> randomRegularGraphAsEdgeList(int n, int k) {
 			cands.pop_back();
 		}
 	}
-	assert(sz(ed) == n * k / 2);
+	assert(SZ(ed) == n * k / 2);
 	return ed;
 fail:
 	cerr << "retry" << endl;

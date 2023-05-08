@@ -6,9 +6,9 @@ const ll mod = 1000000007;
 
 vl simpleConv(vl a, vl b) {
 	if (a.empty() || b.empty()) return {};
-	int s = sz(a) + sz(b) - 1;
+	int s = SZ(a) + SZ(b) - 1;
 	vl c(s);
-	rep(i,0,sz(a)) rep(j,0,sz(b))
+	rep(i,0,SZ(a)) rep(j,0,SZ(b))
 		c[i+j] = (c[i+j] + (ll)a[i] * b[j]) % mod;
 	for(auto &x: c) if (x < 0) x += mod;
 	return c;

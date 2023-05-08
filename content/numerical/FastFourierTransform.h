@@ -22,7 +22,7 @@
 typedef complex<double> C;
 typedef vector<double> vd;
 void fft(vector<C>& a) {
-	int n = sz(a), L = 31 - __builtin_clz(n);
+	int n = SZ(a), L = 31 - __builtin_clz(n);
 	static vector<complex<long double>> R(2, 1);
 	static vector<C> rt(2, 1);  // (^ 10% faster if double)
 	for (static int k = 2; k < n; k *= 2) {
@@ -44,15 +44,15 @@ void fft(vector<C>& a) {
 }
 vd conv(const vd& a, const vd& b) {
 	if (a.empty() || b.empty()) return {};
-	vd res(sz(a) + sz(b) - 1);
-	int L = 32 - __builtin_clz(sz(res)), n = 1 << L;
+	vd res(SZ(a) + SZ(b) - 1);
+	int L = 32 - __builtin_clz(SZ(res)), n = 1 << L;
 	vector<C> in(n), out(n);
 	copy(all(a), begin(in));
-	rep(i,0,sz(b)) in[i].imag(b[i]);
+	rep(i,0,SZ(b)) in[i].imag(b[i]);
 	fft(in);
 	for (C& x : in) x *= x;
 	rep(i,0,n) out[i] = in[-i & (n - 1)] - conj(in[i]);
 	fft(out);
-	rep(i,0,sz(res)) res[i] = imag(out[i]) / (4 * n);
+	rep(i,0,SZ(res)) res[i] = imag(out[i]) / (4 * n);
 	return res;
 }

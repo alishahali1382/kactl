@@ -76,7 +76,7 @@ int main() {
 		P p{rand() % 20 - 10, rand() % 20 - 10};
 		P q{rand() % 20 - 10, rand() % 20 - 10};
 
-		N = sz(ps);
+		N = SZ(ps);
 
 		P delta = q - p, farp = p - delta * 50, farq = p + delta * 50;
 
@@ -86,7 +86,7 @@ int main() {
 		if (p == q) continue;
 
 		auto fail = [&](int line) {
-			cerr << sz(ps) << endl;
+			cerr << SZ(ps) << endl;
 			for(auto &p: ps) cout << p<<' ';
 			cout<<endl;
 			cout << "line: "<<p<<' '<<q<<endl;
@@ -148,12 +148,12 @@ int main() {
 			assert(r.first == corner);
 			if (r.second != -1) FAIL();
 		}
-		if (N > 2 && (sz(hits) == 1) != (r.second == -1 || r.first == r.second)) {
+		if (N > 2 && (SZ(hits) == 1) != (r.second == -1 || r.first == r.second)) {
 			cout<<"res: "<<r.first<<' '<<r.second<<endl;
 			FAIL();
 		}
-		assert(sz(hits) <= 2);
-		if (r.first != r.second && sz(hits) == 2) {
+		assert(SZ(hits) <= 2);
+		if (r.first != r.second && SZ(hits) == 2) {
 			assert(r.second != -1);
 			assert(hits[0].second != hits[1].second);
 			assert(hits[0].second == r.first || hits[0].second == r.second);

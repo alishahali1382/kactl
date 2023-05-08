@@ -14,7 +14,7 @@ int main() {
 		rep(it2,0,1000) {
 			int v = (rand() >> 4) & 3;
 			if (v == 0 && !edges.empty()) { // remove
-				int r = (rand() >> 4) % sz(edges);
+				int r = (rand() >> 4) % SZ(edges);
 				pii ed = edges[r];
 				swap(edges[r], edges.back());
 				edges.pop_back();

@@ -26,13 +26,13 @@ bool find(int j, vector<vi>& g, vi& btoa, vi& vis) {
 }
 int dfsMatching(vector<vi>& g, vi& btoa) {
 	vi vis;
-	rep(i,0,sz(g)) {
-		vis.assign(sz(btoa), 0);
+	rep(i,0,SZ(g)) {
+		vis.assign(SZ(btoa), 0);
 		for (int j : g[i])
 			if (find(j, g, btoa, vis)) {
 				btoa[j] = i;
 				break;
 			}
 	}
-	return sz(btoa) - (int)count(all(btoa), -1);
+	return SZ(btoa) - (int)count(all(btoa), -1);
 }

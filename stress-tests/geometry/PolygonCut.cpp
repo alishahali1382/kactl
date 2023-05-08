@@ -18,8 +18,8 @@ int main() {
 			P c = ps[j], d = ps[(j+1)%N];
 			P r1, r2;
 			auto r = segInter(a, b, c, d);
-			if (sz(r) == 2) goto fail;
-			if (sz(r) == 1) {
+			if (SZ(r) == 2) goto fail;
+			if (SZ(r) == 1) {
 				if (i+1 == j || (j+1) % N == i) ;
 				else goto fail;
 			}

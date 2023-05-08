@@ -26,7 +26,7 @@ template<class G> void dfs(int j, G &g) {
 	}
 }
 template<class G> vi scc(G &g) {
-	int n = sz(g);
+	int n = SZ(g);
 	orig.assign(n, 0); low = orig;
 	no_vertices = no_components = 0;
 	comp.assign(n, -1);
@@ -58,7 +58,7 @@ int main() {
 			}
 			vi comp2 = old::scc(adj);
 			scc(adj, [&](vi& v) {
-				compsize[ncomps] = sz(v);
+				compsize[ncomps] = SZ(v);
 			});
 			if (comp != comp2) {
 				for(auto &x: comp) cout << x << ' ';
