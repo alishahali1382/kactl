@@ -1,8 +1,7 @@
 /**
- * Author: Parsa Alizadeh (inspired by Kolompeh)
+ * Author: Parsa Alizadeh
  * Date: 2023-05-15
- * License: Unlicense
- * Source: https://github.com/alishahali1382/kactl/blob/master/convex_hull.cpp
+ * Source: Kolompeh
  * Description: Returns a vector of antipodal pairs of points.
  * Time: O(n \log n)
  * Status: tested with kattis:roberthood
@@ -16,7 +15,7 @@ typedef Point<ll> P;
 vector<pair<P, P>> get_antipodals(vector<P> &p) {
     int n = SZ(p);
     sort(all(p));
-    vector<P> U, L; // lower and upper hull
+    vector<P> U, L; // upper and lower hull
     for (int i = 0; i < n; i++) {
         while (SZ(U) > 1 && U[SZ(U)-2].cross(U[SZ(U)-1], p[i]) >= 0)
             U.pop_back();
