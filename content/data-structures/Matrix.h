@@ -30,11 +30,8 @@ template<class T, int N> struct Matrix {
 		assert(p >= 0);
 		M a, b(*this);
 		rep(i,0,N) a.d[i][i] = 1;
-		while (p) {
+		for (; p; p>>=1, b=b*b)
 			if (p&1) a = a*b;
-			b = b*b;
-			p >>= 1;
-		}
 		return a;
 	}
 };
