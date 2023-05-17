@@ -9,6 +9,9 @@
  * If all points are on a line, no triangles will be returned.
  * Should work for doubles as well, though there may be precision issues in 'circ'.
  * Returns triangles in order \{t[0][0], t[0][1], t[0][2], t[1][0], \dots\}, all counter-clockwise.
+ * Delaunay triangulation for set P corresponds to the dual graph of the Voronoi diagram for set P.
+ * Center of circumcircle of each traingle is a point in the Voronoi diagram, and each edge of the triangle
+ * relates to a line between points in the Voronoi diagram.
  * Time: O(n \log n)
  * Status: stress-tested
  */
