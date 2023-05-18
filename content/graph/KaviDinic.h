@@ -17,7 +17,6 @@ struct MaxFlow{
 	vector<Edge> E;
 	vector<vector<int>> adj;
 	vector<int> ptr,  dist;
- 
 	void init(int N){
 		n = N;
 		E.clear(); adj.clear(); ptr.clear(); dist.clear();
@@ -28,7 +27,6 @@ struct MaxFlow{
 		adj[u].push_back(SZ(E)); E.push_back({v , 0 , 0});
 		return SZ(E) - 2;
 	}
- 
 	int BFS(){
 		fill(all(ptr) , 0);
 		fill(all(dist) , MOD);
@@ -46,7 +44,6 @@ struct MaxFlow{
 		}
 		return (dist[t] < MOD);
 	}
- 
 	ll DFS(int v, ll f){
 		if(v == t || f == 0){
 			return f;
@@ -63,7 +60,6 @@ struct MaxFlow{
 		}
 		return res;
 	}
- 
 	ll maxFlow(int v , int u){
 		ll ans = 0;
 		s = v; t = u; D = INF;
@@ -72,7 +68,7 @@ struct MaxFlow{
 				ans += DFS(v , INF);
 			}
 			D /= 2;
-		}
+		}Dinic
 		return ans;
 	}
 }

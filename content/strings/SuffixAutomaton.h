@@ -1,4 +1,5 @@
 /**
+ * Author: BQI343
  * Description: Used infrequently. Constructs minimal deterministic 
  	* finite automaton (DFA) that recognizes all suffixes of a string.
  	* \texttt{len} corresponds to the maximum length of a string in
@@ -8,7 +9,6 @@
  	* Suffix links correspond to suffix tree of the reversed string!
  * Time: O(N\log \sum)
  * Source: *
- * Verification: *
  */
  
 struct SuffixAutomaton {

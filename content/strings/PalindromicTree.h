@@ -1,4 +1,5 @@
 /**
+ * Author: BQI343
  * Description: Used infrequently. Palindromic tree computes 
 	* number of occurrences of each palindrome within string.
 	* \texttt{ans[i][0]} stores min even $x$ such that 
@@ -8,10 +9,6 @@
  * Source: 
 	* http://codeforces.com/blog/entry/13959
 	* https://codeforces.com/blog/entry/19193
- * Verification: 
-	* https://oj.uz/problem/view/APIO14_palindrome
-	* http://acm.timus.ru/problem.aspx?space=1&num=2058 (call vector reserve to pass ML)
-	* https://codeforces.com/gym/102141/attachments F
  */
 
 struct PalTree {
