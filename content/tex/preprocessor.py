@@ -80,41 +80,77 @@ def processwithcomments(caption, instream, outstream, listingslang):
         error = "Could not read source."
         lines = []
     nlines = list()
+
+    hash_script = 'hash'
+    cur_hash = None
+    hash_num = 0
+
     for line in lines:
-        if 'exclude-line' in line:
-            continue
-        if 'include-line' in line:
-            line = line.replace('// ', '', 1)
         had_comment = "///" in line
-        keep_include = 'keep-include' in line
         # Remove /// comments
-        line = line.split("///")[0].rstrip()
-        # Remove '#pragma once' lines
-        if line == "#pragma once":
+        if had_comment:
+            line, tail = line.split("///",1)
+            tail = tail.strip()
+        line = line.rstrip()
+        # Remove '#pragma once' and 'using namespace std;' lines
+        if line == "#pragma once" or line == "using namespace std;":
             continue
-        if had_comment and not line:
+        if line.endswith("/** exclude-line */"):
+            continue
+        if had_comment and not line and tail not in ["start-hash", "end-hash"]:
             continue
         # Check includes
         include = parse_include(line)
-        if include is not None and not keep_include:
+        if include is not None:
             includelist.append(include)
             continue
+
+        if had_comment and tail == "start-hash":
+            assert cur_hash is None
+            cur_hash = []
+            hash_num += 1
+
+            if line: line += ' '
+            line += "// %s-%d" % (hash_script, hash_num)
+
+        if cur_hash is not None: cur_hash.append(line)
+
+        if had_comment and tail == "end-hash":
+            cur_hash = '\n'.join(cur_hash)
+            p = subprocess.Popen(['sh', 'content/contest/%s.sh' % hash_script], stdin=subprocess.PIPE, stdout=subprocess.PIPE, encoding="utf-8")
+            hsh, _ = p.communicate(cur_hash)
+            hsh = hsh.split(None, 1)[0]
+            if line: line += ' '
+            line += "// %s-%d = %s" % (hash_script, hash_num, hsh)
+            cur_hash = None
+
         nlines.append(line)
-    # Remove and process multiline comments
+
+    if hash_num == 0 and hash_script == 'hash-cpp':
+        # Automatically hash the whole file if no hashes are specified
+        p = subprocess.Popen(['sh', 'content/contest/%s.sh' % hash_script], stdin=subprocess.PIPE, stdout=subprocess.PIPE, encoding="utf-8")
+        hsh, _ = p.communicate('\n'.join(nlines))
+        hsh = hsh.split(None, 1)[0]
+        if len(nlines[-1]) > 5:
+            nlines.append('')
+        if nlines[-1]: nlines[-1] += ' '
+        nlines[-1] += "// %s-all = %s" % (hash_script, hsh)
+
+    # Remove and process /** */ comments
     source = '\n'.join(nlines)
     nsource = ''
-    start, start2, end_str = find_start_comment(source)
+    start = source.find("/**")
     end = 0
     commands = {}
     while start >= 0 and not error:
         nsource = nsource.rstrip() + source[end:start]
-        end = source.find(end_str, start2)
+        end = source.find("*/", start)
         if end<start:
-            error = "Invalid %s %s comments." % (source[start:start2], end_str)
+            error = "Invalid /** */ comments."
             break
-        comment = source[start2:end].strip()
-        end += len(end_str)
-        start, start2, end_str = find_start_comment(source, end)
+        comment = source[start+3:end].strip()
+        end = end + 2
+        start = source.find("/**",end)
 
         commentlines = comment.split('\n')
         command = None
@@ -194,7 +230,7 @@ def processraw(caption, instream, outstream, listingslang = 'raw'):
 
 def parse_include(line):
     line = line.strip()
-    if line.startswith("#include"):
+    if line.startswith("#include") and not line.endswith("/** keep-include */"):
         return line[8:].strip()
     return None
 
