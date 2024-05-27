@@ -10,7 +10,7 @@
 #pragma once
 
 typedef vector<ll> Poly;
-Poly Inverse(Poly A){ // A[0]!=0
+Poly Inverse(Poly A){ // A[0]!=0  /// start-hash
 	Poly B={powmod(A[0], mod-2)};
 	for (int n=1; n<A.size(); n<<=1){
 		Poly C(4*n, 0), D(4*n, 0);
@@ -24,9 +24,9 @@ Poly Inverse(Poly A){ // A[0]!=0
 		for (int i=0; i<2*n; i++) B[i]=(2*B[i]-C[i])%mod;
 	}
 	return B;
-}
- 
-Poly Sqrt(Poly A){ // A[0]=1
+} /// end-hash
+
+Poly Sqrt(Poly A){ // A[0]=1  /// start-hash
 	Poly B={1};
 	for (int n=1; n<A.size(); n<<=1){
 		B.resize(2*n, 0);
@@ -41,4 +41,4 @@ Poly Sqrt(Poly A){ // A[0]=1
 		for (int i=0; i<2*n; i++) B[i]=(B[i]+C[i])*(mod+1)/2%mod;
 	}
 	return B;
-}
+} /// end-hash
