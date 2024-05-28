@@ -33,9 +33,7 @@ int GetLcp(int x, int y){
 	if (x<y) swap(x, y);
 	int res=0;
 	for (int i=LOG-1; ~i && x<m; i--) if (Rank[i][x]==Rank[i][y]){
-		x+=(1<<i);
-		y+=(1<<i);
-		res|=(1<<i);
+		x+=(1<<i); y+=(1<<i); res|=(1<<i);
 	}
 	return res;
 }

@@ -15,7 +15,7 @@ void add(int ind, int end) { ... } // add a[ind] (end = 0 or 1)
 void del(int ind, int end) { ... } // remove a[ind]
 int calc() { ... } // compute current answer
 
-vi mo(vector<pii> Q) {
+vi mo(vector<pii> Q) {   /// start-hash
 	int L = 0, R = 0, blk = 350; // ~N/sqrt(Q)
 	vi s(SZ(Q)), res = s;
 #define K(x) pii(x.first/blk, x.second ^ -(x.first/blk & 1))
@@ -30,9 +30,9 @@ vi mo(vector<pii> Q) {
 		res[qi] = calc();
 	}
 	return res;
-}
+}  /// end-hash
 
-vi moTree(vector<array<int, 2>> Q, vector<vi>& ed, int root=0){
+vi moTree(vector<array<int, 2>> Q, vector<vi>& ed, int root=0){  /// start-hash
 	int N = SZ(ed), pos[2] = {}, blk = 350; // ~N/sqrt(Q)
 	vi s(SZ(Q)), res = s, I(N), L(N), R(N), in(N), par(N);
 	add(0, 0), in[0] = 1;
@@ -59,4 +59,4 @@ vi moTree(vector<array<int, 2>> Q, vector<vi>& ed, int root=0){
 		if (end) res[qi] = calc();
 	}
 	return res;
-}
+}  /// end-hash
