@@ -14,7 +14,7 @@
  */
 #pragma once
 
-bool find(int j, vector<vi>& g, vi& btoa, vi& vis) {
+bool find(int j, vector<vi>& g, vi& btoa, vi& vis) {  /// start-hash
 	if (btoa[j] == -1) return 1;
 	vis[j] = 1; int di = btoa[j];
 	for (int e : g[di])
@@ -23,8 +23,8 @@ bool find(int j, vector<vi>& g, vi& btoa, vi& vis) {
 			return 1;
 		}
 	return 0;
-}
-int dfsMatching(vector<vi>& g, vi& btoa) {
+}  /// end-hash
+int dfsMatching(vector<vi>& g, vi& btoa) {  /// start-hash
 	vi vis;
 	rep(i,0,SZ(g)) {
 		vis.assign(SZ(btoa), 0);
@@ -35,4 +35,4 @@ int dfsMatching(vector<vi>& g, vi& btoa) {
 			}
 	}
 	return SZ(btoa) - (int)count(all(btoa), -1);
-}
+}   /// end-hash
